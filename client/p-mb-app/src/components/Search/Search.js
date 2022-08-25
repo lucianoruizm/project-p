@@ -1,16 +1,15 @@
-import { useState } from "react"
 
-const Search = ({setSearch}) => {
-    const [value, setValue] = useState('');
-
-    function handleChange(e) {
-        setValue(e.target.value);
-        setSearch(e);
-    }
-
+const Search = ({ setSearch }) => {
+    
     return (
         <form>
-          <input placeholder="Search..." type='text' onChange={handleChange} value={value} />
+          <input 
+            onChange={(e) => {
+                setSearch(e.target.value);
+            }}
+            placeholder="Search..." 
+            type='text'
+           />
         </form>
     )
 }

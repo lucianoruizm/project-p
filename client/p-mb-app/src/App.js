@@ -12,7 +12,7 @@ function App() {
   let [search, setSearch] = useState("");
   let [fetchedData, updateFetchedData] = useState([]);
 
-  let api = "./data.json";
+  let api = "http://localhost:8000/product/";
 
   useEffect(() => {
     (async function () {
