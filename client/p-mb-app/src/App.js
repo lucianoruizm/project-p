@@ -7,6 +7,7 @@ import Card from "./components/Card/Card";
 import Pagination from "./components/Pagination/Pagination";
 import Filter from "./components/Filter/Filter";
 import Navbar from "./components/Navbar/Navbar";
+import Search2 from "./components/Search/Search2";
 
 function App() {
   let [search, setSearch] = useState("");
@@ -21,11 +22,29 @@ function App() {
     })();
   }, [api]);
 
+  function handleSearch(e) {
+    const q = e.target.value;
+
+    if (!!q) {
+      const search = fetchedData.filter((x) => {
+        return (
+          x.name.toLowerCase().includes(q) ||
+          x.description.toLowerCase().includes(q)
+        );
+      });
+
+      updateFetchedData(search);
+    } else {
+      updateFetchedData([]);
+    }
+}
+
+
 
   return (
     <div className="App">
       <h1 className="text-center mb-3">Productos</h1>
-      <Search setSearch={setSearch} />
+      <Search2 onSearch={handleSearch} />
       <div className="container">
       <div className="row">
         Filter component will be placed here

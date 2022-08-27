@@ -5,7 +5,7 @@ const Card = ({ results }) => {
 
     if (results) {
         display = results.map((x) => {
-            let { id, name, price, size, img, description} = x;
+            let { id, name, price, size, img, description } = x;
 
             return (
                 <div 

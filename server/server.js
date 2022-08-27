@@ -15,17 +15,8 @@ const product = async (req, res) => {
     }
 }
 
-const filterName = async (req, res) => {
-    try{
-        const data = await fs.promises.readFile('./db/product.json', 'utf-8');
-        const name = req.query.name;
+app.get('/product', product);
 
-    } catch{
-        res.status(400).send('Products not found');
-    }
-}
-
-app.get('/product/', product);
 
 //URL
 app.listen(port, () => {
