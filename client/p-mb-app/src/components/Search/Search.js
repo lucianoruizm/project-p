@@ -1,4 +1,4 @@
-
+// Puede aplicarse una vez creado el backend ???
 const Search = ({ setSearch }) => {
     
     return (

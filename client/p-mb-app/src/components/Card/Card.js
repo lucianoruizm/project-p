@@ -1,4 +1,4 @@
-import styles from "./Card.module.scss";
+import './Card.css';
 
 const Card = ({ results }) => {
     let display;
@@ -10,17 +10,17 @@ const Card = ({ results }) => {
             return (
                 <div 
                   key={id}
-                  className="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 position-relative text-dark"
+                  className="cards-container"
                 >
-                  <div className={`${styles.card} d-flex flex-column justify-content-center`}
+                  <div className="card-container"
                   >
-                      <img className={`${styles.img} img-fluid`} src={img} alt="" />
-                      <div className={`${styles.content}`}>
-                          <div className="fs-5 fw-bold mb-4">{name}</div>
-                          <div className="">
-                              <div className="fs-5">Precio: {price}</div>
-                              <div className="fs-5">Tamaño: {size}</div>
-                              <div className="fs-5">Descripción: {description}</div>
+                      <img className="card-img" src={img} alt="" />
+                      <div className="card-body">
+                          <div className="card-name">{name}</div>
+                          <div className="card-info-container">
+                              <div className="card-info"><strong>Precio:</strong> {price}</div>
+                              <div className="card-info"><strong>Tamaño</strong>: {size}</div>
+                              <div className="card-info"><strong>Descripción:</strong> {description}</div>
                           </div>
                       </div>
                   </div>

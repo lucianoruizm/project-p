@@ -1,0 +1,25 @@
+.cards-container{
+    margin: 30px;
+    display: flex;
+}
+
+.card-container{
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px -1px rgba(224,173,219,1);
+    -webkit-box-shadow: 0 0 5px -1px rgba(224,173,219,1);
+    -moz-box-shadow: 0 0 5px -1px rgba(224,173,219,1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-img{
+    width: 97%;
+    margin-top: 3px;
+    border-radius: 10px;
+}
+
+.card-body{
+    padding: 10px;
+}

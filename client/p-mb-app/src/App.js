@@ -1,61 +1,79 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap";
 import React, { useState, useEffect } from "react";
+import { data as productList } from './components/data';
+import './App.css';
 
-import Search from "./components/Search/Search";
+// import Search from "./components/Search/Search";
 import Card from "./components/Card/Card";
-import Pagination from "./components/Pagination/Pagination";
-import Filter from "./components/Filter/Filter";
+// import Pagination from "./components/Pagination/Pagination";
+// import Filter from "./components/Filter/Filter";
 import Navbar from "./components/Navbar/Navbar";
-import Search2 from "./components/Search/Search2";
+import FirstSearch from "./components/Search/FirstSearch";
 
 function App() {
-  let [search, setSearch] = useState("");
-  let [fetchedData, updateFetchedData] = useState([]);
+  // let [diapers, updateDiapers] = useState("");
+  // let [fabrics, updateFabrics] = useState("");
+  // let [clothing, updateClothing] = useState("");
+  // let [search, setSearch] = useState(""); para cuando se aplique fetch a la api
+  let [fetchedData, updateFetchedData] = useState([ ...productList]);
 
-  let api = "http://localhost:8000/product/";
+  // Para consumir la futura api, primero en package.json --->  "proxy": "http://localhost:8000"
+  // let api = "http://localhost:8000/product"; Luego se agregaran variables haciendo referencias al filtrado por nombre, paginas y categorias
 
-  useEffect(() => {
-    (async function () {
-      let data = await fetch(api).then((res) => res.json());
-      updateFetchedData(data);
-    })();
-  }, [api]);
+  // useEffect(() => {
+  //   (async function () {
+  //     let data = await fetch(api).then((res) => res.json());
+  //     updateFetchedData(data);
+  //   })();
+  // }, [api]);
 
   function handleSearch(e) {
-    const q = e.target.value;
+    const query = e.target.value;
 
-    if (!!q) {
-      const search = fetchedData.filter((x) => {
+    if (!!query) {
+      const search = productList.filter((product) => {
         return (
-          x.name.toLowerCase().includes(q) ||
-          x.description.toLowerCase().includes(q)
+          product.name.toLowerCase().includes(query) ||
+          product.description.toLowerCase().includes(query)
         );
       });
 
       updateFetchedData(search);
     } else {
-      updateFetchedData([]);
+      updateFetchedData(productList)
     }
+}
+
+function handleChange(e) {
+  const query = e.target.name;
+
+  if (!!query) {
+    const category = productList.filter((product) => {
+      return (
+        product.diapers.toLowerCase().includes(query) ||
+        product.fabrics.toLowerCase().includes(query) ||
+        product.clothing.toLowerCase().includes(query)
+      );
+    });
+
+    updateFetchedData(category);
+  } else {
+    updateFetchedData(productList)
+  }
 }
 
 
 
   return (
     <div className="App">
-      <h1 className="text-center mb-3">Productos</h1>
-      <Search2 onSearch={handleSearch} />
-      <div className="container">
-      <div className="row">
-        Filter component will be placed here
-        <div className="col-lg-8 col-12">
-          <div className="row">
-            <Card results={fetchedData} />
-          </div>
-        </div>
-      </div>
-      </div>
-   </div>
+      <Navbar />
+      <FirstSearch onSearch={handleSearch} />
+        {/* <Filter
+          // updateDiapers={updateDiapers}
+          // updateFabrics={updateFabrics}
+          // updateClothing={updateClothing}
+        /> */}
+        <Card results={fetchedData} />
+    </div>
   );
 }
 
