@@ -72,7 +72,10 @@ function handleChange(e) {
           // updateFabrics={updateFabrics}
           // updateClothing={updateClothing}
         /> */}
-        <Card results={fetchedData} />
+        <h1>Nuestros Productos</h1>
+        <div className="container-1">
+          <Card results={fetchedData} />
+        </div>
     </div>
   );
 }

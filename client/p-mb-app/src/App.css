@@ -4,11 +4,22 @@
     --secondary-color: #9d03fc;
     --secondary-color-opacity: #9d03fc88;
     --skyblue-color: #5bbbd9;
+    --grayish-blue: hsl(220, 14%, 75%);
+    --white-grey: #f8feff;
+}
+
+h1{
+    text-align: center;
 }
 
 .App {
     width: 100%;
     position: relative;
+}
+
+.container-1{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
 }
 
 @media (min-width: 992px){

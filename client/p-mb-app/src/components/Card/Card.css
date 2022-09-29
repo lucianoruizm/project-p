@@ -1,6 +1,5 @@
 .cards-container{
     margin: 30px;
-    display: flex;
 }
 
 .card-container{
@@ -21,5 +20,33 @@
 }
 
 .card-body{
-    padding: 10px;
+    padding: 15px;
+}
+
+.card-name{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.card-info-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.card-info{
+    font-size: 1rem;
+}
+
+@media (min-width: 435px) and (max-width: 616px){
+    .card-container{
+        flex-direction: row;
+    }
+    .card-img{
+        width: 50%;
+        margin: 0;
+    }
+    .card-body{
+        padding: 10px 5px 10px 20px;
+    }
 }
