@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 header {
     height: 68px;
     padding: 0 10px;
@@ -8,6 +10,7 @@ header {
 
 li {
     list-style: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 a{
