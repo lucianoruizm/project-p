@@ -7,34 +7,38 @@ import './Navbar.css';
 
 const Navbar = () => {
 
-  const [isOpen, setOpen] = useState(false);
+  const [navbarOpen, setNavbarOpen] = useState(false)
+
+  const handleToggle = () => {
+    setNavbarOpen(prev => !prev)
+  }
 
   return (
-    <header>
-      <div className='header-navigation'>
-        <Hamburger toggled={isOpen} toggle={setOpen} />
-        <img src={logo} alt='logo' className='img-logo'/>
-        <AiOutlineSearch className='search-icon' />
-        <nav className="desktop-navbar">
-            <ul className="navbar__items">
-              <li>Inicio</li>
-              <li>Productos</li>
-              <li>Contacto</li>
-            </ul>
-        </nav>
-        {/* modal navbar start */}
-        <div className="modal-navbar__background">
-            <nav className="modal-navbar">
-              <ul className="modal-navbar__items">
-                <li>Inicio</li>
-                <li>Productos</li>
-                <li>Contacto</li>
-              </ul>
-            </nav>
+    <>
+      <header>
+        <div className='header-navigation'>
+          <img src={logo} alt='logo' className='img-logo'/>
+          {/* <AiOutlineSearch className='search-icon' /> */}
+          <nav className="desktop-navbar">
+                <ul className='list-container'>
+                  <li><a href="">Inicio</a></li>
+                  <li><a href="">Productos</a></li>
+                  <li><a href="">Contacto</a></li>
+                </ul>
+          </nav>
+          <Hamburger onToggle={handleToggle} />
         </div>
-        {/* modal navbar end */}
+      </header>
+      <div className={`${navbarOpen ? " show-menu" : "hide-menu"}`}>
+          <nav className="modal-navbar">
+            <ul className="modal-navbar__items">
+              <li><a href="">Inicio</a></li>
+              <li><a href="">Productos</a></li>
+              <li><a href="">Contacto</a></li>
+            </ul>
+          </nav>
       </div>
-    </header>
+    </>
   )
 }
 
